@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+   @*  <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <!-- Show Logout button if user is logged in -->
+        <form method="post" action="@Url.Action("Logout", "Home")">
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    }
+    else
+    {
+        <!-- Show Login button if user is NOT logged in -->
+        <form method="post" action="@Url.Action("Login", "Home")">
+            <button type="submit" class="btn btn-primary">SSO Login</button>
+        </form>
+    }
+</div>
